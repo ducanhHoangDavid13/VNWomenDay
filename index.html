@@ -4,35 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌌 Gửi Lan,Ngày Phụ Nữ Việt Nam💖</title>
+    <title>🌌 Gửi Lan, Cô Gái Đặc Biệt 💖</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
-            --primary-heart-color: #ff69b4; /* Hot Pink */
-            --secondary-heart-color: #ff3366; /* Deep Pink */
-            --star-color: #ffea00; /* Bright Yellow */
-            --background-dark1: #0a0a0a;
-            --background-dark2: #1a0a2a;
-            --background-dark3: #2a004a;
+            --primary-heart-color: #ff69b4;
+            /* Hot Pink */
+            --secondary-heart-color: #ff3366;
+            /* Deep Pink */
+            --primary-heart-dark: #b62263; /* Màu tối hơn cho khối 3D của trái tim */
+            --star-color: #ffd700;
+            /* Gold Yellow */
+            --background-dark1: #00000a;
+            --background-dark2: #08001a;
+            --background-dark3: #10002a;
+            --message-bg-color: rgba(255, 255, 255, 0.98);
+
+            /* Màu sắc cho tinh vân */
+            --nebula-pink: rgba(255, 0, 100, 0.35);
+            --nebula-purple: rgba(100, 0, 255, 0.35);
+            --nebula-orange: rgba(255, 150, 0, 0.25);
+            --nebula-blue: rgba(100, 100, 255, 0.2);
+            --nebula-green: rgba(0, 255, 150, 0.15); /* Thêm màu xanh lá nhạt */
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             background: linear-gradient(135deg, var(--background-dark1) 0%, var(--background-dark2) 50%, var(--background-dark3) 100%);
             overflow: hidden;
-            color: #ccc;
+            color: #eee;
             position: relative;
-            /* Thiết lập perspective cho hiệu ứng 3D */
-            perspective: 1000px; 
+            perspective: 1800px; /* Tăng perspective cho hiệu ứng 3D sâu hơn */
+            transform-style: preserve-3d;
         }
 
-        /* LỚP SAO 1 (Xa nhất, nhỏ, ít chuyển động) */
+        /* LỚP SAO 1 (Xa nhất) */
         .stars-bg-1 {
             position: absolute;
             top: 0;
@@ -40,13 +57,14 @@
             width: 100%;
             height: 100%;
             background-image: radial-gradient(white 0.5px, transparent 0.5px);
-            background-size: 80px 80px;
-            opacity: 0.6;
-            animation: moveStars 180s linear infinite, twinkle 10s infinite alternate;
+            background-size: 100px 100px;
+            opacity: 0.4; /* Giảm độ mờ */
+            animation: moveStars 240s linear infinite, twinkle 10s infinite alternate;
             z-index: 1;
-            transform: translateZ(-500px) scale(1.5); /* Đẩy ra xa và phóng to để lấp đầy */
+            transform: translateZ(-1000px) scale(2.5); /* Đẩy xa hơn và phóng to hơn */
         }
-        /* LỚP SAO 2 (Trung bình, rõ hơn) */
+
+        /* LỚP SAO 2 (Trung bình) */
         .stars-bg-2 {
             position: absolute;
             top: 0;
@@ -54,57 +72,79 @@
             width: 100%;
             height: 100%;
             background-image: radial-gradient(white 0.8px, transparent 0.8px);
-            background-size: 60px 60px;
-            opacity: 0.8;
-            animation: moveStars 120s linear infinite reverse, twinkle 8s infinite alternate;
+            background-size: 70px 70px;
+            opacity: 0.6; /* Giảm độ mờ */
+            animation: moveStars 180s linear infinite reverse, twinkle 8s infinite alternate;
             z-index: 2;
-            transform: translateZ(-200px) scale(1.2); /* Vị trí trung gian */
+            transform: translateZ(-600px) scale(1.8); /* Đẩy xa hơn và phóng to hơn */
         }
-        /* LỚP SAO 3 (Gần nhất, lớn nhất, chuyển động nhanh nhất) */
+
+        /* LỚP SAO 3 (Gần nhất) */
         .stars-bg-3 {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(white 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.9;
-            animation: moveStars 90s linear infinite, twinkle 6s infinite alternate;
+            background-image: radial-gradient(white 1.2px, transparent 1.2px);
+            background-size: 50px 50px;
+            opacity: 0.8; /* Giảm độ mờ */
+            animation: moveStars 120s linear infinite, twinkle 6s infinite alternate;
             z-index: 3;
-            transform: translateZ(-50px) scale(1.1); /* Gần hơn */
+            transform: translateZ(-200px) scale(1.3); /* Đẩy xa hơn và phóng to hơn */
         }
-        
+
         @keyframes twinkle {
             0%, 100% { opacity: 0.7; }
-            50% { opacity: 0.9; }
+            50% { opacity: 1; }
         }
-        /* Hoạt ảnh di chuyển cho các lớp sao (Parallax) */
+
         @keyframes moveStars {
             from { background-position: 0 0; }
             to { background-position: 1000px 1000px; }
         }
 
-        /* HIỆU ỨNG TINH VÂN MỜ (Thêm chiều sâu màu sắc) */
+        /* HIỆU ỨNG TINH VÂN NỀN (Phức tạp hơn để tạo cảm giác thiên hà) */
         .nebula {
             position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle at 10% 20%, rgba(255, 0, 100, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 90%, rgba(100, 0, 255, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 40% 60%, rgba(255, 200, 0, 0.1) 0%, transparent 40%);
-            animation: moveNebula 45s infinite alternate ease-in-out;
+            width: 200%; /* Lớn hơn */
+            height: 200%; /* Lớn hơn */
+            background:
+                radial-gradient(circle at 15% 25%, var(--nebula-pink) 0%, transparent 35%),
+                radial-gradient(circle at 85% 75%, var(--nebula-purple) 0%, transparent 35%),
+                radial-gradient(circle at 40% 60%, var(--nebula-orange) 0%, transparent 30%),
+                radial-gradient(circle at 60% 30%, var(--nebula-blue) 0%, transparent 30%),
+                radial-gradient(circle at 20% 80%, var(--nebula-green) 0%, transparent 35%); /* Thêm lớp màu mới */
+            animation: moveNebula 80s infinite alternate ease-in-out; /* Thời gian dài hơn */
             z-index: 4;
             transform-origin: center center;
-            transform: translateZ(-300px) scale(1.2); /* Đẩy xa ra và phóng to */
+            filter: blur(3px); /* Blur mạnh hơn */
+            transform: translateZ(-700px) scale(2); /* Đẩy xa hơn và phóng to hơn */
+            opacity: 0.8;
         }
 
         @keyframes moveNebula {
-            0% { transform: translateZ(-300px) scale(1.2) translate(0, 0) rotate(0deg); opacity: 0.8;}
-            50% { transform: translateZ(-280px) scale(1.3) translate(5%, 5%) rotate(5deg); opacity: 1;}
-            100% { transform: translateZ(-300px) scale(1.2) translate(0, 0) rotate(0deg); opacity: 0.8;}
+            0% {
+                transform: translateZ(-700px) scale(2) rotate(0deg) translateX(0) translateY(0);
+                opacity: 0.8;
+                filter: blur(3px);
+            }
+            33% {
+                transform: translateZ(-650px) scale(2.1) rotate(5deg) translateX(5%) translateY(10%);
+                opacity: 1;
+                filter: blur(5px);
+            }
+            66% {
+                transform: translateZ(-720px) scale(1.9) rotate(-3deg) translateX(-8%) translateY(-5%);
+                opacity: 0.9;
+                filter: blur(4px);
+            }
+            100% {
+                transform: translateZ(-700px) scale(2) rotate(0deg) translateX(0) translateY(0);
+                opacity: 0.8;
+                filter: blur(3px);
+            }
         }
-
 
         /* CONTAINER CHỨA TÂM VÀ VỆ TINH XOAY */
         .heart-container {
@@ -117,134 +157,242 @@
             justify-content: center;
             align-items: center;
             pointer-events: none;
-            /* Đặt giữa các lớp sao và thiệp */
-            z-index: 10; 
+            z-index: 10;
+            transform-style: preserve-3d;
         }
 
         /* HIỆU ỨNG TRUNG TÂM (Tâm xoay + Vệ tinh) */
         #heartSpinner {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             opacity: 1;
             transition: opacity 1s ease-out;
-            /* Tạo chiều sâu cho spinner chính */
-            transform-style: preserve-3d; 
-            transform: translateZ(50px); 
+            transform-style: preserve-3d;
+            animation: spin-world 20s linear infinite;
         }
 
-        /* TRÁI TIM LỚN LÀM TÂM - HIỆU ỨNG 3D/Bóng bẩy nổi bật trên nền đen */
+        @keyframes spin-world {
+            from {
+                transform: translateZ(50px) rotateX(10deg) rotateY(0deg);
+            }
+            to {
+                transform: translateZ(50px) rotateX(10deg) rotateY(360deg);
+            }
+        }
+
+        /* TRÁI TIM LỚN LÀM TÂM (Phiên bản HÌNH KHỐI) */
         #centerHeart {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) translateZ(20px); /* Đẩy lên phía trước một chút */
-            font-size: 80px;
-            color: var(--primary-heart-color); 
+            transform: translate(-50%, -50%) translateZ(40px);
+            font-size: 100px;
+            color: var(--primary-heart-color);
             z-index: 20;
-            text-shadow: 
-                0 0 20px rgba(255, 105, 180, 1), /* Sáng mạnh hơn */
-                0 8px 12px rgba(0, 0, 0, 0.6),    /* Bóng đổ dưới sâu hơn */
-                0 -4px 10px rgba(255, 255, 255, 0.8); /* Điểm sáng trên đỉnh rõ hơn */
+
+            -webkit-text-stroke: 1.5px var(--primary-heart-dark);
+            text-stroke: 1.5px var(--primary-heart-dark);
+
+            text-shadow:
+                1px 1px 0 var(--primary-heart-dark),
+                2px 2px 0 var(--primary-heart-dark),
+                3px 3px 0 var(--primary-heart-dark),
+                4px 4px 0 var(--primary-heart-dark),
+                5px 5px 0 var(--primary-heart-dark),
+                6px 6px 0 var(--primary-heart-dark),
+                /* Tăng offset cho bóng đổ để tách khỏi nền */
+                8px 8px 15px rgba(0, 0, 0, 0.5), 
+                /* Tăng cường hiệu ứng glow */
+                0 0 40px var(--primary-heart-color),
+                0 0 60px var(--primary-heart-color),
+                0 0 90px rgba(255, 255, 255, 0.7);
+
             animation: pulse 1.5s infinite alternate;
         }
 
-        /* VỆ TINH XOAY */
-        .spinning-symbol {
-            position: absolute;
-            font-size: 20px;
-            color: var(--star-color);
-            text-shadow: 0 0 5px var(--star-color), 0 0 10px rgba(255, 255, 255, 0.5); /* Phát sáng */
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) translateZ(40px) scale(1); }
+            100% { transform: translate(-50%, -50%) translateZ(45px) scale(1.1); }
         }
 
-        /* Keyframes cho hiệu ứng đập (Tâm trái tim) */
-        @keyframes pulse {
-            0% { transform: translate(-50%, -50%) translateZ(20px) scale(1); }
-            100% { transform: translate(-50%, -50%) translateZ(25px) scale(1.1); }
+        /* VỆ TINH XOAY - Các đối tượng nhỏ xoay quanh trung tâm */
+        .spinning-symbol {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 22px;
+            color: var(--star-color);
+            text-shadow: 0 0 8px var(--star-color), 0 0 15px rgba(255, 255, 255, 0.6);
+            transform-style: preserve-3d;
+            /* margin-top và margin-left được bỏ qua vì đã dùng transform để định vị */
+        }
+
+        .spinning-symbol span {
+            display: block;
+            animation: localSpin 5s infinite linear reverse;
+            /* Đảm bảo trung tâm xoay của span nằm ở chính nó */
+            transform-origin: center center; 
+        }
+
+        @keyframes localSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* CÁC ĐỐI TƯỢNG VŨ TRỤ XOAY (MỚI) */
+        .star-object {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 18px; /* Kích thước vừa phải */
+            color: #fff; /* Màu trắng cho các vật thể xa */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(100, 200, 255, 0.3); /* Ánh sáng xanh nhạt */
+            transform-style: preserve-3d;
+            opacity: 0.7;
+        }
+        .star-object span {
+            display: block;
+            /* Xoay cục bộ */
+            animation: localSpin 7s infinite linear forwards; 
+            transform-origin: center center;
         }
 
         /* HIỆU ỨNG TRÁI TIM BAY LÊN */
         .symbol.flying {
             position: absolute;
-            color: #ffccd9; 
-            font-size: 20px;
+            color: #ffccd9;
+            font-size: 25px;
             animation: floatUp 8s infinite ease-in;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), 0 0 15px var(--primary-heart-color);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px var(--primary-heart-color);
             transform-style: preserve-3d;
         }
 
         @keyframes floatUp {
             0% { transform: translate(0) rotate(0deg) scale(1) translateZ(0); opacity: 0.8; }
-            100% { transform: translateY(-100vh) rotate(15deg) scale(0.6) translateZ(-200px); opacity: 0; } /* Bay lên và lùi xa */
+            100% { transform: translateY(-100vh) rotate(30deg) scale(0.6) translateZ(-300px); opacity: 0; }
         }
 
         /* HỘP LỜI CHÚC (TẤM THIỆP) */
         .message-box {
             text-align: center;
-            padding: 40px 60px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            /* Bóng đổ sâu hơn và lan rộng, tạo hiệu ứng nổi trên nền đen */
-            box-shadow: 0 25px 70px rgba(255, 105, 180, 0.4), 0 0 40px rgba(255, 105, 180, 0.3); 
-            z-index: 20; /* Nằm trên tất cả các hiệu ứng nền */
-            max-width: 500px;
-            border: 4px solid var(--primary-heart-color);
+            padding: 50px 70px;
+            background-color: var(--message-bg-color);
+            border-radius: 20px;
+            box-shadow:
+                0 20px 60px rgba(var(--primary-heart-color), 0.4),
+                inset 0 0 15px rgba(255, 255, 255, 0.5);
+            z-index: 20;
+            max-width: 550px;
+            min-height: 300px;
+            border: 6px solid var(--primary-heart-color);
             opacity: 0;
-            transform: translateY(30px) translateZ(100px); /* Đẩy thiệp lên gần hơn */
+            transform: translateY(30px) translateZ(150px);
             transition: opacity 1s ease-out, transform 1s ease-out;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
         }
 
         .message-box.show {
             opacity: 1;
-            transform: translateY(0) translateZ(100px); /* Vị trí cuối cùng của thiệp */
+            transform: translateY(0) translateZ(150px);
+        }
+
+        /* PHẦN MỚI CHO YÊU CẦU CLICK */
+        .message-cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+            user-select: none; /* Ngăn chọn văn bản khi click */
+        }
+        .message-cover h2 {
+            font-family: 'Pacifico', cursive;
+            color: var(--secondary-heart-color);
+            font-size: 2.2em;
+            margin: 0;
+        }
+        .message-cover p {
+            font-style: italic;
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .message-content {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInContent 1s ease-out;
+        }
+
+        .message-box.open .message-cover {
+            display: none;
+        }
+        .message-box.open .message-content {
+            display: flex;
+        }
+
+        @keyframes fadeInContent {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ẢNH CÔ ẤY */
         .girl-image {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 20px;
-            border: 3px solid var(--primary-heart-color);
-            box-shadow: 0 5px 25px rgba(255, 105, 180, 0.7); /* Bóng đổ hồng đậm và rõ hơn */
-            transform: scale(0.8) translateZ(10px); /* Nổi nhẹ so với thiệp */
+            margin-bottom: 25px;
+            border: 5px solid var(--primary-heart-color);
+            box-shadow:
+                0 8px 30px rgba(255, 105, 180, 0.8),
+                0 0 15px rgba(255, 255, 255, 0.7);
+            transform: scale(0.8) translateZ(20px);
             opacity: 0;
             transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+            transform-style: preserve-3d;
         }
-        .message-box.show .girl-image {
-            transform: scale(1) translateZ(10px);
+
+        .message-box.open .girl-image {
+            transform: scale(1) translateZ(20px);
             opacity: 1;
         }
 
-        /* THIẾT LẬP FONT CHO THIỆP */
-        h1 { 
-            color: #8B0000;
-            font-size: 2.2em; 
-            margin-bottom: 0.5em; 
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            font-family: 'Georgia', serif;
-            border-bottom: 2px solid var(--secondary-heart-color);
-            padding-bottom: 10px;
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: var(--secondary-heart-color);
+            font-size: 2.5em;
+            margin-bottom: 0.6em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 255, 255, 0.3);
+            border-bottom: 3px solid var(--secondary-heart-color);
+            padding-bottom: 12px;
         }
 
-        p { 
-            font-size: 1.15em; 
-            line-height: 1.6; 
-            margin-bottom: 1.5em; 
-            color: #333; 
+        p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25em;
+            line-height: 1.7;
+            margin-bottom: 1.8em;
+            color: #222;
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
         }
-        
-        /* Chữ ký */
+
         .signature {
-            font-size: 1.2em; 
-            color: #8B0000; 
-            font-weight: bold; 
-            margin-top: 20px;
-            font-style: italic;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5em;
+            color: var(--secondary-heart-color);
+            font-weight: normal;
+            margin-top: 25px;
+            font-style: normal;
+            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
@@ -258,24 +406,34 @@
     <div class="heart-container">
         <div id="heartSpinner">
             <div id="centerHeart">❤️</div>
-            </div>
+        </div>
     </div>
 
     <div class="message-box" id="messageBox">
-        <img src="https://i.imgur.com/your_image_url_here.jpg" alt="Lan - Cô gái đặc biệt" class="girl-image">
-        <h1>💐 Chúc Mừng Lan Ngày 20/10! 💐</h1>
-        <p>
-            Lan à, nhân ngày đặc biệt này, mình muốn gửi đến bạn những lời chúc tốt đẹp và chân thành nhất.
-        </p>
-        <p>
-            Chúc bạn luôn thật nhiều niềm vui, xinh đẹp rạng ngời và thành công trong mọi điều bạn làm. Bạn là một người bạn tuyệt vời.
-        </p>
-        <p>
-            Mong rằng ngày hôm nay sẽ thật ý nghĩa và mang đến cho bạn thật nhiều hạnh phúc!
-        </p>
-        <p class="signature">
-           Happy VietNamese Women's Day!💖
-        </p>
+
+        <div class="message-cover" id="messageCover">
+            <h2>Bạn có một lời nhắn! 💌</h2>
+            <p>(Click để mở)</p>
+        </div>
+
+        <div class="message-content" id="messageContent">
+            <img src="img.png" alt="Lan - Cô gái đặc biệt"
+                class="girl-image">
+
+            <h1>💐 Chúc Mừng Lan Ngày 20/10! 💐</h1>
+            <p>
+                Lan à, nhân ngày đặc biệt này, mình muốn gửi đến bạn những lời chúc tốt đẹp và chân thành nhất.
+            </p>
+            <p>
+                Chúc bạn luôn thật nhiều niềm vui, xinh đẹp rạng ngời và thành công trong mọi điều bạn làm. Bạn là một
+                người bạn tuyệt vời.
+            </p>
+            <p>
+                Mong rằng ngày hôm nay sẽ thật ý nghĩa và mang đến cho bạn thật nhiều hạnh phúc!
+            </p>
+            <p class="signature">
+                Một ngày đặc biệt của bà đó nha bà,về học hsk cùng nhau nhé </p>
+        </div>
     </div>
 
     <script>
@@ -285,95 +443,106 @@
             const heartContainer = document.querySelector('.heart-container');
             const spinDuration = 5000; // Thời gian xoay (5 giây)
 
-            createSpinningSymbols(spinner, ['✨', '⭐', '💫', '🌸'], 8);
+            createSpinningSymbols(spinner, ['✨', '⭐', '💫', '🌸'], 10);
+            createCosmicObjects(spinner, ['🪐', '🌟', '☄️', '🌌'], 8); // Thêm các vật thể vũ trụ
 
+            // Sau 5 giây, trái tim mờ đi và tấm thiệp (ở dạng bìa) xuất hiện
             setTimeout(() => {
                 spinner.style.opacity = '0';
                 messageBox.classList.add('show');
 
+                // Cho phép các trái tim bay lên sau khi spinner biến mất
                 setTimeout(() => {
                     heartContainer.style.zIndex = '5';
                     startFlyingHearts(heartContainer);
                 }, 1000);
 
             }, spinDuration);
+
+            // Thêm sự kiện click vào tấm thiệp để mở nội dung
+            messageBox.addEventListener('click', () => {
+                // Chỉ mở thiệp nếu nó chưa được mở và đã hiện lên
+                if (messageBox.classList.contains('show') && !messageBox.classList.contains('open')) {
+                    messageBox.classList.add('open');
+                }
+            }, { once: true });
         });
 
-        // Hàm tạo các biểu tượng xoay (vệ tinh)
+        // Hàm tạo các biểu tượng xoay 3D (vệ tinh gần trung tâm)
         function createSpinningSymbols(container, symbols, count) {
-            const center = 150;
-            
+            const radius = 170; // Bán kính gần
             for (let i = 0; i < count; i++) {
-                const angle = (i / count) * 2 * Math.PI; 
-                
                 const symbol = document.createElement('div');
                 symbol.classList.add('spinning-symbol');
-
-                symbol.style.top = `${center}px`; 
-                symbol.style.left = `${center}px`;
-                symbol.style.transformOrigin = '0 0';
-
-                const duration = 4 + Math.random() * 2;
-                const depth = Math.random() * 80 - 40; // z-index ngẫu nhiên từ -40px đến 40px
-                symbol.style.transform = `rotate(${angle * 180 / Math.PI}deg) translateZ(${depth}px)`; // Áp dụng z-index
-
-                symbol.style.animation = `orbit ${duration}s infinite linear`;
-                symbol.style.animationDelay = `${(i / count) * -duration}s`;
-
+                const angleY = Math.random() * 360;
+                const angleX = Math.random() * 180 - 90;
+                symbol.style.transform = `rotateY(${angleY}deg) rotateX(${angleX}deg) translateZ(${radius}px)`;
                 const localSpin = document.createElement('span');
                 localSpin.innerHTML = symbols[i % symbols.length];
-                localSpin.style.display = 'block';
-                localSpin.style.animation = `localSpin ${duration}s infinite linear reverse`; 
+                localSpin.style.animationDuration = `${3 + Math.random() * 4}s`;
+                localSpin.style.animationDelay = `${Math.random() * -5}s`;
                 symbol.appendChild(localSpin);
-                
                 container.appendChild(symbol);
             }
         }
-        
-        // Keyframes phụ trợ cho biểu tượng con
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes orbit {
-                from { transform: rotate(0deg) translateX(150px) rotateY(0deg); }
-                to { transform: rotate(360deg) translateX(150px) rotateY(360deg); } /* Thêm xoay Y để cảm giác 3D hơn */
+
+        // Hàm TẠO CÁC VẬT THỂ VŨ TRỤ (MỚI - xa hơn)
+        function createCosmicObjects(container, symbols, count) {
+            const radius = 250; // Bán kính xa hơn
+            for (let i = 0; i < count; i++) {
+                const obj = document.createElement('div');
+                obj.classList.add('star-object');
+                const angleY = Math.random() * 360;
+                const angleX = Math.random() * 180 - 90;
+                // Vị trí xoay
+                obj.style.transform = `rotateY(${angleY}deg) rotateX(${angleX}deg) translateZ(${radius}px)`;
+                // Tốc độ xoay tổng thể của obj
+                obj.style.animation = `spin-orbit ${25 + Math.random() * 15}s linear infinite`;
+                obj.style.animationDelay = `${Math.random() * -10}s`;
+                
+                const localSymbol = document.createElement('span');
+                localSymbol.innerHTML = symbols[i % symbols.length];
+                // Tự xoay của từng obj
+                localSymbol.style.animationDuration = `${5 + Math.random() * 8}s`; 
+                localSymbol.style.animationDelay = `${Math.random() * -5}s`;
+                obj.appendChild(localSymbol);
+                container.appendChild(obj);
             }
-            @keyframes localSpin { 
-                from { transform: rotate(0deg); } 
-                to { transform: rotate(360deg); } 
-            }
-        `;
-        document.head.appendChild(style);
+
+            // Keyframe riêng cho các vật thể vũ trụ (xa hơn)
+            const style = document.createElement('style');
+            style.innerHTML += `
+                @keyframes spin-orbit {
+                    from { transform: rotateY(0deg) rotateX(0deg) translateZ(${radius}px); }
+                    to { transform: rotateY(360deg) rotateX(360deg) translateZ(${radius}px); }
+                }
+            `;
+            document.head.appendChild(style);
+        }
 
 
-        // Hàm tạo hiệu ứng trái tim bay lên (Sau khi xoay xong)
+        // Hàm tạo hiệu ứng trái tim bay lên
         function startFlyingHearts(container) {
             setInterval(() => {
                 createFlyingSymbol(container);
-            }, 250);
+            }, 200);
         }
 
         function createFlyingSymbol(container) {
             const symbol = document.createElement('div');
             symbol.classList.add('symbol', 'flying');
-
-            const symbols = ['💖', '✨', '🌸', '🌼', '⭐'];
+            const symbols = ['💖', '✨', '🌸', '🌼', '⭐', '❤️'];
             symbol.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-
             const startX = Math.random() * window.innerWidth;
             symbol.style.left = `${startX}px`;
             symbol.style.bottom = `-50px`;
-
-            const size = 18 + Math.random() * 25;
+            const size = 20 + Math.random() * 30;
             symbol.style.fontSize = `${size}px`;
-
-            const duration = 6 + Math.random() * 4;
-            const delay = Math.random() * 0.7;
-
+            const duration = 7 + Math.random() * 5;
+            const delay = Math.random() * 1;
             symbol.style.animationDuration = `${duration}s`;
             symbol.style.animationDelay = `${delay}s`;
-
             container.appendChild(symbol);
-
             setTimeout(() => {
                 symbol.remove();
             }, (duration + delay) * 1000);
